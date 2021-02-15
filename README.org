@@ -1,13 +1,19 @@
 * Markus Sagen homepage
 
 - Features that can be included:
-  - [Link to wowchemy](https://wowchemy.com/docs/guide/search/)
+  - [[https://wowchemy.com/docs/guide/search/][Link to wowchemy]]
 
 ** Example images
-[!example1](examples_for_github/ex1.png)
-[!example2](examples_for_github/ex2.png)
+#+caption: Example of the default landing page
+#+name: fig:SED-HR4001
+[[./examples_for_github/ex1.png]]
 
-- Guide I used: https://flaviocopes.com/start-blog-with-hugo/
+#+caption: Example of the default landing page
+#+name: fig:SED-HR4001
+[[./examples_for_github/ex2.png]]
+
+** Guides I used:
+- [[https://flaviocopes.com/start-blog-with-hugo/]]
 
 ** Pre-requisite
 
