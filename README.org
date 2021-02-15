@@ -264,4 +264,18 @@ ____________________________
   - Show what items should be displayed in the clickable menu
 - main/config/_default/params.toml  
   - Color themes, Twitter, Contact info, analytic and general info
+** Installation instructions
+#+begin_src sh
+brew install hugo
+hugo new site homepage
+cd homepage && git init
 
+# TODO
+# Add folder to Github
+
+mkdir themes
+git submodule add https://github.com/themefisher/academia-hugo.git themes/academia-hugo
+cp -r themes/academia-hugo/exampleSite/* .
+cp config/_default/config.toml .
+rm config/_default/config.toml
+#+end_src
