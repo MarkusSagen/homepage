@@ -279,3 +279,11 @@ cp -r themes/academia-hugo/exampleSite/* .
 cp config/_default/config.toml .
 rm config/_default/config.toml
 #+end_src
+* TODO
+- [ ] Add better Search engine
+- [ ] Tag Blogs and projects
+- [ ] Add Slides and Reports from all previous projects
+- [ ] Start to add Blog posts
+- [ ] Google Analytics
+- [ ] Use pages offline
+- [ ] Better overview and filtering of blog posts
