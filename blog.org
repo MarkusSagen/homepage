@@ -1,0 +1,822 @@
+#+TITLE: Blog
+
+
+#+hugo_base_dir: .
+#+hugo_section: post
+#+export_hugo_section: post
+#+hugo_auto_set_lastmod: t
+
+#+seq_todo: TODO DRAFT DONE
+#+seq_todo: TEST__TODO | TEST__DONE
+
+#+property: header-args :eval never-export
+#
+#+startup: indent
+
+#+macro: doc [[https://ox-hugo.scripter.co/doc/$1][$2]]
+#+macro: oxhugoissue =ox-hugo= Issue #[[https://github.com/kaushalmodi/ox-hugo/issues/$1][$1]]
+#+macro: hugoissue =hugo= Issue #[[https://github.com/gohugoio/hugo/issues/$1][$1]]
+#+macro: hugopr =hugo= PR #[[https://github.com/gohugoio/hugo/pull/$1][$1]]
+#+macro: bfissue /Blackfriday/ Issue #[[https://github.com/russross/blackfriday/issues/$1][$1]]
+#+macro: commit commit [[https://github.com/kaushalmodi/ox-hugo/commit/$1][$1]]
+
+# https://scripter.co/latex-in-html/
+#+macro: latex @@html:<span class="latex">L<sup>a</sup>T<sub>e</sub>X</span>@@
+#+macro: youtube @@html:<div class="org-youtube"><iframe src="https://www.youtube-nocookie.com/embed/$1" allowfullscreen title="YouTube Video"></iframe></div>@@
+
+
+
+
+
+
+#+author:
+* TODO
+** Change the code color in dark model to Nord!
+** Latex Options for adding and writing math
+* Post 1
+:PROPERTIES:
+:EXPORT_FILE_NAME: post-1
+:EXPORT_DATE: 2017-07-12T17:31:56-04:00
+:END:
+Export this *first* post only by bringing point here and doing =M-x org-hugo-export-wim-to-md=.
+* Post 2
+:PROPERTIES:
+:EXPORT_FILE_NAME: post-2
+:END:
+This post has no date.
+
+Export this *second* post only by bringing point here and doing =M-x org-hugo-export-wim-to-md=.
+* Image / Figure                                                      :image:
+** Image captions
+ #+startup: logdone
+:PROPERTIES:
+:EXPORT_DATE: 2017-07-19
+:EXPORT_FILE_NAME: image-captions
+:CUSTOM_ID: image-captions
+:END:
+#+begin_description
+Figure captions with markup.
+#+end_description
+
+Some text before image.
+We can assign attributes to an image with for instance =#+attr_html: :width 50=
+Or by assigning attributes with org directly: =:title Hello=
+
+#+attr_html: :alt Inline Non-hyperlinked Image
+#+attr_html: :width 100 :title Hello
+#+caption: A unicorn! "Something in double quotes"
+[[/img/boards.jpg]]
+
+Some more text, after image.
+
+#+caption: The /same/ figure *again*, testing [[https://ox-hugo.scripter.co][a link]] too!
+[[/img/boards.jpg]]
+*** Clickable image that opens the image (works!)
+Click below image to jump to the unicorn image.
+
+#+begin_src org
+# Org source
+,#+name: fig__clickable_image_that_opens_the_image
+,#+caption: Click this image -- It's a hyperlink
+[[/img/boards.jpg][file:../files-to-be-copied-to-static/static/images/boards.jpg]]
+#+end_src
+
+#+name: fig__clickable_image_that_opens_the_image
+#+caption: Click this image -- It's a hyperlink
+[[/images/org-mode-unicorn-logo.png][file:../files-to-be-copied-to-static/static/images/unicorn-logo-small.png]]
+
+- NOTE :: =file:= has to be used in the *Description component* of the
+          Org link.
+**** Similar link with =#+name= specified
+Here's a similar link with =#+name= specified.. which should also be
+clickable.
+
+#+name: fig__unicorn
+[[/img/boards.png][file:/img/boards.jpg]]
+**** Same link with =file:= in "link" portion of the Org link too
+/Note that the =file:= is needed only in the "description" portion to
+create a hyperlinked image that links to an image. But having =file:=
+in the "link" portion of the Org link too shouldn't hurt./
+
+{{{oxhugoissue(376)}}}
+
+** Image with Hugo =figure= shortcode parameters set using =ATTR_HTML=
+:PROPERTIES:
+:EXPORT_FILE_NAME: figure-shortcode-and-attr-html
+:END:
+{{{oxhugoissue(17)}}}
+*** Setting =class= parameter
+#+attr_html: :class inset
+[[/images/org-mode-unicorn-logo.png]]
+
+[[https://github.com/kaushalmodi/ox-hugo/issues/17#issuecomment-313627728][Discussion]]
+**** COMMENT Below will not work!
+You cannot wrap markdown code inside HTML.
+
+As /rdwatters/ says [[https://discourse.gohugo.io/t/is-it-possible-to-insert-html-code-in-markdown-content/4867/4?u=kaushalmodi][here]],
+#+begin_quote
+HTML can be part of markdown because HTML-inside-markdown is part of
+the spec. That said, remember that the spec disallows markdown nested
+inside of HTML. So if you create a div, just make sure everything
+inside that div is valid HTML.
+#+end_quote
+
+#+begin_export md
+<div class="inset">
+#+end_export
+[[/images/org-mode-unicorn-logo.png]]
+#+begin_export md
+</div>
+#+end_export
+*** Setting =alt= parameter
+[[https://www.reddit.com/r/emacs/comments/71wy6n/orgmode_as_a_markup_language_does_make_sense_even/dnhqudn/][Reference]]
+#+attr_html: :alt Org-mode Unicorn Logo
+[[/images/org-mode-unicorn-logo.png]]
+*** Setting =title= parameter
+#+attr_html: :title Logo
+[[/images/org-mode-unicorn-logo.png]]
+*** Setting image caption
+The image caption can be set in two ways.
+1. Using the Org =#+caption= keyword
+2. Using =#+attr_html: :caption my caption=
+
+The =#+caption= is available will get the higher precedence. In the
+below image, caption is set using that:
+
+#+include: "./all-posts.org::#image-captions" :only-contents t
+
+Below, the same caption is set using the =#+attr_html= method instead:
+
+Some text before image.
+
+#+attr_html: :caption A unicorn!
+[[/images/org-mode-unicorn-logo.png]]
+
+/Enter a new line after the image link so that it's in an "Org
+paragraph" that contains just that image. That tells Org that that
+=#+attr_html= attribute is associated *only* with that image, and not
+to the text that follows that image too./
+*** Setting image size
+**** Setting =:width= parameter
+The image [[https://www.w3schools.com/tags/att_img_width.asp][width]] can be specified in *pixels* using the =:width=
+parameter. *The height of the image will be resized proportionally.*
+
+Below image is shown 50 pixels wide.
+#+attr_html: :width 50
+[[/images/org-mode-unicorn-logo.png]]
+
+Below image is shown 100 pixels wide.
+#+attr_html: :width 100
+[[/images/org-mode-unicorn-logo.png]]
+
+Below image is shown with a width of 1000 pixels! Now the size of this
+image is 200px × 200px. But the image will still show up in 1000px ×
+1000px size, but obviously heavily pixelated!
+
+#+attr_html: :width 1000
+[[/images/org-mode-unicorn-logo.png]]
+**** Setting =:height= parameter
+*NOTE*: Support for specifying =height= parameter to the Hugo =figure=
+ shortcut was only added recently in [[https://github.com/gohugoio/hugo/pull/4018][hugo PR #4018]]. So setting this
+ parameter will need *hugo v0.31* or later.
+
+-----
+
+The image [[https://www.w3schools.com/tags/att_img_height.asp][height]] can be specified in *pixels* using the =:height=
+parameter. *The weight of the image will be resized proportionally.*
+
+Below image is shown 50 pixels tall.
+#+attr_html: :height 50
+[[/images/org-mode-unicorn-logo.png]]
+
+Below image is shown 100 pixels tall.
+#+attr_html: :height 100
+[[/images/org-mode-unicorn-logo.png]]
+
+Below image is shown with a height of 1000 pixels! Now the size of
+this image is 200px × 200px. But the image will still show up in
+1000px × 1000px size, but obviously heavily pixelated!
+
+#+attr_html: :height 1000
+[[/images/org-mode-unicorn-logo.png]]
+**** Setting both =:width= and =:height=
+The *NOTE* above applies here too.. needs *hugo v0.31* or later.
+
+The figure sizes below are intentionally set /mis-proportionally/ just
+for testing.
+- =:width 100 :height 200=
+  #+attr_html: :width 100 :height 200
+  [[/images/org-mode-unicorn-logo.png]]
+- =:width 200 :height 100=
+  #+attr_html: :width 200 :height 100
+  [[/images/org-mode-unicorn-logo.png]]
+*** Multiple =ATTR_HTML=
+Below in Org source:
+#+begin_src org
+#+html: <style>.foo img { border:2px solid black; }</style>
+#+attr_html: :alt Org mode logo
+#+attr_html: :width 300 :class foo
+[[https://ox-hugo.scripter.co/test/images/org-mode-unicorn-logo.png]]
+#+end_src
+
+Rendered this:
+
+#+html: <style>.foo img { border:2px solid black; }</style>
+#+attr_html: :alt Org mode logo
+#+attr_html: :width 300 :class foo
+[[https://ox-hugo.scripter.co/test/images/org-mode-unicorn-logo.png]]
+
+*NOTE*: We cannot use =:style= in =#+attr_html= because Hugo does not
+ /yet/ support a =style= argument in the =figure= shortcode [ [[https://github.com/gohugoio/hugo/blob/488631fe0abc3667355345c7eb98ba7a2204deb5/tpl/tplimpl/template_embedded.go#L22-L37][Source]]
+ ].
+
+So using =#+html: <style>.foo img ... </style>= and =#+attr_html: :class
+ foo= as shown in the workaround above.
+*** Other
+Similarly, =:link=, =:attr=, =:attrlink= parameters in =#+attr_html=
+are also supported to set the corresponding parameter in the Hugo
+=figure= shortcode.
+** Inlined SVG                                                   :svg:inline:
+:PROPERTIES:
+:EXPORT_FILE_NAME: inlined-svg
+:END:
+#+begin_description
+Test inlined SVGs with hyperlinks.
+#+end_description
+{{{oxhugoissue(253)}}}
+
+- [[http://plantuml.com/svg][Example of generating SVG with hyperlinks using PlantUML]]
+- [[https://alligator.io/svg/hyperlinks-svg/][SVGs with hyperlinks need to be inlined]]
+
+Introduce a new ~:inlined t~ HTML attribute.
+*NEEDS the =org-plantum-jar-path= set first
+#+begin_src plantuml :file static/img/firefox.svg :exports results
+skinparam svgLinkTarget _parent
+start
+:[[https://ox-hugo.scripter.co/ ox-hugo homepage]];
+stop
+#+end_src
+#+caption: An SVG with *hyperlinks* -- generated using PlantUML
+#+attr_html: :inlined t
+#+RESULTS:
+[[file:static/img/firefox.svg]]
+* Video                                                              :videos:
+** Embedded Video                                                  :embedded:
+:PROPERTIES:
+:EXPORT_FILE_NAME: embedded-video
+:END:
+[[https://www.w3schools.com/html/html5_video.asp][Using ~video~ HTML5 tag]]
+
+#+begin_export html
+ <video width="320" height="240" controls>
+  <source src="/videos/sample.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+#+end_export
+[[https://sample-videos.com/][Video source]]
+* Setting heading anchors
+:PROPERTIES:
+:EXPORT_FILE_NAME: setting-heading-anchors
+:EXPORT_DATE: 2017-07-12T17:05:39-04:00
+:END:
+** Heading 1 of the post
+:PROPERTIES:
+:CUSTOM_ID: cool-ref-1
+:END:
+Something
+*** Heading 1.1 of the post
+:PROPERTIES:
+:CUSTOM_ID: cool-ref-1.1
+:END:
+Something else
+** Heading 2 of the post
+:PROPERTIES:
+:CUSTOM_ID: cool-ref-2
+:END:
+Something 2
+*** Heading 2.1 of the post
+:PROPERTIES:
+:CUSTOM_ID: cool-ref-2.1
+:END:
+Something 2.1
+** En dash --, Em dash ---, Horizontal ellipsis ... in titles          :@upstream:
+:PROPERTIES:
+:EXPORT_FILE_NAME: en-dash-em-dash-hellip-in-titles
+:END:
+This tests an =ox-hugo= feature that gets around an upstream
+limitation, where the Blackfriday /smartDashes/ rendering does not
+happen in post titles ({{{hugoissue(4175)}}}).
+** 2020-04-19
+:PROPERTIES:
+:EXPORT_FILE_NAME: title-with-just-date-chars
+:END:
+{{{oxhugoissue(350)}}}
+* Excluded post                                                    :noexport:
+:PROPERTIES:
+:EXPORT_FILE_NAME: excluded-post
+:END:
+This post must not be exported as it is tagged =noexport=.
+** Commented post
+:PROPERTIES:
+:EXPORT_FILE_NAME: commented-post
+:END:
+This post must not be exported as it is commented.
+
+
+* Formatting                                                     :formatting:
+** Org-Mode Formatting and General
+:PROPERTIES:
+:EXPORT_DATE: 2017-07-31
+:EXPORT_FILE_NAME: general-formatting
+:END:
+*** Markup - Org vs Markdown
+Below table shows the translation of Org markup to Markdown markup in
+the exported =.md= files.
+|--------------------+--------------------------------------------------------------------+-----------------------|
+| Org                | Markdown                                                           | In Hugo rendered HTML |
+|--------------------+--------------------------------------------------------------------+-----------------------|
+| =*bold*=           | =**bold**=                                                         | *bold*                |
+| =/italics/=        | =_italics_=                                                        | /italics/             |
+| ==monospace==      | =`monospace`=                                                      | =monospace=           |
+| =~key-binding~=    | =`key-binding`=                                                    | ~key-binding~         |
+|                    | - if =org-hugo-use-code-for-kbd= is nil [default]                  |                       |
+| =~key-binding~=    | =<kbd>key-binding</kbd>=                                           |                       |
+|                    | - if =org-hugo-use-code-for-kbd= is non-nil                        |                       |
+|                    | - Requires *CSS* to render the =<kbd>= tag as something special.   |                       |
+| =+strike-through+= | =~~strike-through~~=                                               | +strike-through+      |
+| =_underline_=      | =<span class = "underline">underline</span>=                       | _underline_           |
+|                    | - Requires *CSS* to render this =underline= class as an underline. |                       |
+|--------------------+--------------------------------------------------------------------+-----------------------|
+*** Hyphens and spaces in categories :@an_apple__a___pear:@good__bad__and__ugly:an_apple__a___pear:
+:PROPERTIES:
+:EXPORT_FILE_NAME: hyphens-and-spaces-in-categories
+:END:
+The Org tags do not allow spaces. So the trick we use is replace
+- *single* underscore becomes a -
+  In Org =@abc_def= becomes Hugo category =abc-def=
+
+- *double* underscores becomes a spaces.
+  An Org tag =@abc__def= becomes Hugo category =abc def=
+
+- *triple* underscore becomes a _
+  An Org tag =@arb___def= becomes Hugo category =abc_def=
+**** Prefer Hyphen Categories :@_a:@___a:@b_:@b___:@a_b:@a___b:@a_b___c:@_a_b___c___:
+*** Tags - Ensure that certain sections does not become exported
+By placing your cursor on a heading, press =C-c, C-c= you will assign tags
+
+
+Tags allows one to assign groupings of the files by writing =:some-tag-name:=
+One can also assign tags at the heading of an article with =:@top-tag:=
+You can also ensure that certain headings wont be exported by adding the tag: =:noexport:=
+*** Add comments
+#+begin_src org
+,#+begin_description
+Test the case where the title contains only the date, making it look
+like a Hugo TOML date field.
+,#+end_description
+#+end_src
+*** Math
+Math can be displayed in many ways, either centered directly with =$$ $$= or with LaTeX source blocks:
+**** TODO
+$$x \forall \mathcal{X} \in \{1, 2, \cdots, n\}$$
+$$\sum_{i=1}^{Q}w_i^2$$
+*** Code
+#+begin_src python
+class GP(gp.models.ExactGP):
+    def __init__(self, cov, train_x, train_y):
+        super(GP, self).__init__(train_x, train_y, GaussianLikelihood())
+        self.mean = gp.means.ConstantMean()
+        self.cov = cov
+
+    def forward(self, x):
+        return MultivariateNormal(self.mean(x), self.cov(x))
+
+    def predict(self, x):
+        """Returns the posterior mean together with
+        the boundaries for the 95% credible intervals.
+        """
+        self.eval()
+        with torch.no_grad():
+            pred = self.likelihood(self(x))
+            lower, upper = pred.confidence_region()
+
+        return pred.mean, lower, upper
+
+    def spectral_density(self, smk) -> MixtureSameFamily:
+        """Returns the Mixture of Gaussians over the spectral density
+        of the provided spectral mixture kernel."""
+        mus = smk.mixture_means.detach().reshape(-1, 1)
+        sigmas = smk.mixture_scales.detach().reshape(-1, 1)
+        mix = Categorical(smk.mixture_weights.detach())
+        comp = Independent(Normal(mus, sigmas), 1)
+        return MixtureSameFamily(mix, comp)
+#+end_src
+*** Use Org Code markup for =kbd= tag (default behavior)
+This is the default behavior. So =~C-h f~= will show up as =`C-h f`=
+and then =<code>C-h f</code>= in the final Hugo generated HTML.
+
+Example:
+- Few of Emacs help keybindings: ~C-h f~, ~C-h v~
+*** Example blocks with line number annotation
+- [[https://orgmode.org/manual/Literal-examples.html][Org reference]]
+- [[https://gohugo.io/content-management/syntax-highlighting/][Hugo =highlight= shortcode with line numbers]]
+**** Default new line number start
+#+begin_example -n
+line 1
+ line 2
+#+end_example
+*** Wrapping Org headings in HTML tags :wrapping:headings:section:tags:HTML:
+#+begin_description
+Test the workaround for wrapping Org headings in HTML tags like
+~section~ and ~div~.
+#+end_description
+{{{oxhugoissue(160)}}}
+* Tags
+** Tags as Categories
+*** Category A                                                        :@catA:
+**** Cat A post 1                                                      :meow:
+:PROPERTIES:
+:EXPORT_DATE: 2017-07-24
+:EXPORT_FILE_NAME: cat-a-post-1
+:END:
+This post is in category =catA= and tagged =meow=.
+**** Cat A and cat B                                                  :@catB:
+:PROPERTIES:
+:EXPORT_FILE_NAME: cat-a-and-cat-b
+:EXPORT_DATE: 2017-07-24
+:END:
+This gets both categories =catA= and =catB=.
+** Do not leak post's immediate sub-heading tag into the front-matter :expected_tag:post_heading_followed_soon_with_subheading:
+:PROPERTIES:
+:EXPORT_FILE_NAME: dont-leak-subheading-tags
+:END:
+*** Sub-heading 1                                            :unexpected_tag:
+This is a *special* case where:
+- A post has a sub-heading as the first line in its body, and
+- That sub-heading has a tag too!
+
+The passing case for this test would be that the =unexpected_tag= does
+not leak into the post's front-matter.
+** Example text with code blocks
+:PROPERTIES:
+:CUSTOM_ID: example-text-with-code-blocks
+:END:
+Here are few variables that you might like to change in the =local.mk=:
+- =prefix= :: Org installation directory
+  #+begin_src makefile
+  prefix = /dir/where/you/want/to/install/org # Default: /usr/share
+  #+end_src
+  The =.el= files will go to =$(prefix)/emacs/site-lisp/org= by
+              default. If you'd like to change that, you can tweak the
+              =lispdir= variable.
+- =infodir= :: Org Info installation directory. I like to keep the
+                   Info file for development version of Org in a separate
+                   directory.
+  #+begin_src makefile
+  infodir = $(prefix)/org/info # Default: $(prefix)/info
+  #+end_src
+- =ORG_MAKE_DOC= :: Types of Org documentation you'd like to build by
+                    default.
+  #+begin_src makefile
+  # Define below you only need info documentation, the default includes html and pdf
+  ORG_MAKE_DOC = info pdf card # html
+  #+end_src
+- =ORG_ADD_CONTRIB= :: Packages from the =contrib/= directory that
+     you'd like to build along with Org. Below are the ones on my
+     /must-have/ list.
+  #+begin_src makefile
+  # Define if you want to include some (or all) files from contrib/lisp
+  # just the filename please (no path prefix, no .el suffix), maybe with globbing
+  #   org-eldoc - Headline breadcrumb trail in minibuffer
+  #   ox-extra - Allow ignoring just the heading, but still export the body of those headings
+  #   org-mime - Convert org buffer to htmlized format for email
+  ORG_ADD_CONTRIB = org-eldoc ox-extra org-mime
+  #+end_src
+
+Here's an example of an =emacs-lisp= block:
+#+begin_src emacs-lisp
+(defvar emacs-version-short (format "%s_%s"
+                                    emacs-major-version emacs-minor-version)
+  "A variable to store the current emacs versions as <MAJORVER>_<MINORVER>.
+So, for emacs version 25.0.50.1, this variable will be 25_0.")
+#+end_src
+
+Here's an example of a =python= block ({{{oxhugoissue(314)}}}):
+#+begin_src python
+import itertools as it
+import numpy as np
+
+def permanent(m):
+    nr,nc = np.shape(m)
+    if nr != nc:
+        raise ValueError("Matrix must be square")
+    pm = 0
+    for p in it.permutations(range(nr)):
+        pm += np.product([m[i,p[i]] for i in range(nr)])
+   return pm
+#+end_src
+** Source block with line numbers examples
+:PROPERTIES:
+:CUSTOM_ID: source-block-with-line-numbers-examples
+:END:
+#+begin_src org :noweb-ref src-block-n-default-start
+,#+begin_src emacs-lisp -n
+;; this will export with line number 1 (default)
+(message "This is line 2")
+,#+end_src
+#+end_src
+
+#+begin_src org :noweb-ref src-block-n-custom-start
+,#+begin_src emacs-lisp -n 20
+;; this will export with line number 20
+(message "This is line 21")
+,#+end_src
+#+end_src
+
+#+begin_src org :noweb-ref src-block-n-default-continue
+,#+begin_src emacs-lisp +n
+;; This will be listed as line 22
+(message "This is line 23")
+,#+end_src
+#+end_src
+
+#+begin_src org :noweb-ref src-block-n-custom-continue
+,#+begin_src emacs-lisp +n 10
+;; This will be listed as line 33
+(message "This is line 34")
+,#+end_src
+#+end_src
+** Source block with line highlighting examples
+:PROPERTIES:
+:CUSTOM_ID: source-block-with-line-highlighting-examples
+:END:
+#+begin_src org :noweb-ref src-block-hl-without-n-just-1-line
+,#+begin_src emacs-lisp :hl_lines 2
+(message "This is line 1")
+(message "This is line 2")
+(message "This is line 3")
+,#+end_src
+#+end_src
+
+#+begin_src org :noweb-ref src-block-hl-without-n
+,#+begin_src emacs-lisp :hl_lines 1,3-5
+(message "This is line 1")
+(message "This is line 2")
+(message "This is line 3")
+(message "This is line 4")
+(message "This is line 5")
+(message "This is line 6")
+,#+end_src
+#+end_src
+
+#+begin_src org :noweb-ref src-block-hl-with-n-not-1
+,#+begin_src emacs-lisp -n 7 :hl_lines 1,3-5
+(message "This is line 7 in code, but line 1 for highlighting reference")
+(message "This is line 8 in code, but line 2 for highlighting reference")
+(message "This is line 9 in code, but line 3 for highlighting reference")
+(message "This is line 10 in code, but line 4 for highlighting reference")
+(message "This is line 11 in code, but line 5 for highlighting reference")
+(message "This is line 12 in code, but line 6 for highlighting reference")
+,#+end_src
+#+end_src
+
+#+begin_src org :noweb-ref src-block-hl-with-n
+,#+begin_src emacs-lisp -n :hl_lines 1,3-5
+(message "This is line 1")
+(message "This is line 2")
+(message "This is line 3")
+(message "This is line 4")
+(message "This is line 5")
+(message "This is line 6")
+,#+end_src
+#+end_src
+* Meta
+** Search
+:PROPERTIES:
+:EXPORT_HUGO_SECTION:  post
+:EXPORT_FILE_NAME:  search
+:EXPORT_HUGO_LAYOUT: search
+:EXPORT_HUGO_MENU: :menu "0.search" :title "Click to Search"
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :sitemap '((priority . 0.1))
+:EXPORT_HUGO_OUTPUTS: html json
+:END:
+
+English on [fn:3] line 1
+の Japanese on line 2
+
+static site search implemented using /Fusejs/, /jquery/
+and /mark.js/. -- [[https://gist.github.com/eddiewebb/735feb48f50f0ddd65ae5606a1cb41ae][See Source Here]]
+
+[fn:3] The org-mode webpage for footnotes [[https://orgmode.org/manual/Creating-Footnotes.html][https://orgmode.org/manual/Creating-Footnotes.html]]
+
+* Hugo Bundle concatenation :fragment:concatenation:deep_nesting:page_bundles:
+:PROPERTIES:
+:EXPORT_HUGO_SECTION: post
+:EXPORT_FILE_NAME: bundle
+:END:
+** Articles
+:PROPERTIES:
+:EXPORT_HUGO_SECTION*: articles
+:END:
+*** Articles Index page
+:PROPERTIES:
+:EXPORT_FILE_NAME: _index
+:END:
+This is an index page (/branch/ bundle) for all the articles.
+
+[[https://github.com/kaushalmodi/ox-hugo/issues/210#issuecomment-424891371][Ref]]
+*** Article One
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: article-one
+:END:
+**** Article One Index page
+:PROPERTIES:
+:EXPORT_FILE_NAME: _index
+:END:
+This is an index page (/branch/ bundle) for Articles/Article One.
+**** Chapter One
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: chapter-one
+:END:
+***** Article One Chapter One Index page
+:PROPERTIES:
+:EXPORT_FILE_NAME: _index
+:END:
+This is an index page (/branch/ bundle) for Articles/Article
+One/Chapter One.
+***** Section 1A
+:PROPERTIES:
+:EXPORT_FILE_NAME: section-1a
+:END:
+This is the content of Articles/Article One/Chapter One/Section 1A.
+***** Section 1B
+:PROPERTIES:
+:EXPORT_FILE_NAME: section-1b
+:END:
+This is the content of Articles/Article One/Chapter One/Section 1B.
+
+* Out-commented
+#+BEGIN_COMMENT
+** Section :section:
+** Articles
+:PROPERTIES:
+:EXPORT_HUGO_SECTION: articles
+:END:
+*** Article 1
+:PROPERTIES:
+:EXPORT_FILE_NAME: article-1
+:EXPORT_DATE: 2017-07-19T08:34:29-04:00
+:END:
+First article.
+
+This will land in =content/articles/= as the parent of this subtree
+sets =EXPORT_HUGO_SECTION= to =articles=. Note that the theme needs to
+define at least the =single.html=, either in the =layouts/_default/=
+directory, or =layouts/articles/=, either in the Hugo base dir or the
+theme dir.
+*** Article 2
+:PROPERTIES:
+:EXPORT_FILE_NAME: article-2
+:EXPORT_DATE: 2017-07-19T08:34:22-04:00
+:END:
+Second article.
+
+This will also land in =content/articles/= the same way.
+** Null HUGO_SECTION                                             :root_level:
+*** Using empty EXPORT_HUGO_SECTION
+:PROPERTIES:
+:EXPORT_HUGO_SECTION:
+:EXPORT_FILE_NAME: root-level-content-empty-section
+:END:
+#+begin_description
+Case where ~EXPORT_HUGO_SECTION~ is set to nothing.
+#+end_description
+
+{{{oxhugoissue(164)}}}
+
+This post is created at the site root.
+*** Setting EXPORT_HUGO_SECTION to "/"
+:PROPERTIES:
+:EXPORT_HUGO_SECTION: /
+:EXPORT_FILE_NAME: root-level-content-section-set-to-slash
+:END:
+#+begin_description
+Case where ~EXPORT_HUGO_SECTION~ is set to ~/~.
+#+end_description
+
+{{{oxhugoissue(164)}}}
+
+This behaves the same as *not setting* ~EXPORT_HUGO_SECTION~ at all.
+
+This post is created at the site root.
+** Section fragment concatenation       :fragment:concatenation:deep_nesting:
+*** sub1 section
+:PROPERTIES:
+:EXPORT_HUGO_SECTION*: sub1
+:END:
+**** Post in sub1
+:PROPERTIES:
+:EXPORT_FILE_NAME: hugo-section-frag-post-in-posts-sub1
+:END:
+#+begin_description
+Test post created in ~posts/sub1~.
+#+end_description
+**** sub1/sub2 section
+:PROPERTIES:
+:EXPORT_HUGO_SECTION*: sub2
+:END:
+***** Post in sub1/sub2
+:PROPERTIES:
+:EXPORT_FILE_NAME: hugo-section-frag-post-in-posts-sub1-sub2
+:END:
+#+begin_description
+Test post created in ~posts/sub1/sub2~.
+#+end_description
+***** sub1/sub2/sub3 section
+:PROPERTIES:
+:EXPORT_HUGO_SECTION*: sub3
+:END:
+****** Post in sub1/sub2/sub3
+:PROPERTIES:
+:EXPORT_FILE_NAME: hugo-section-frag-post-in-posts-sub1-sub2-sub3
+:END:
+#+begin_description
+Test post created in ~posts/sub1/sub2/sub3~.
+#+end_description
+*** Post with all HUGO_SECTION, HUGO_SECTION*, EXPORT_FILE_NAME in same subtree
+:PROPERTIES:
+:EXPORT_HUGO_SECTION: articles
+:EXPORT_HUGO_SECTION*: emacs
+:EXPORT_FILE_NAME: hugo-section-frag-post-in-articles-emacs
+:END:
+#+begin_description
+Test post created in ~articles/emacs~.
+#+end_description
+** Hugo Bundle concatenation :fragment:concatenation:deep_nesting:page_bundles:
+:PROPERTIES:
+:EXPORT_HUGO_SECTION: bundle-concat
+:END:
+*** Articles
+:PROPERTIES:
+:EXPORT_HUGO_SECTION*: articles
+:END:
+**** Articles Index page
+:PROPERTIES:
+:EXPORT_FILE_NAME: _index
+:END:
+This is an index page (/branch/ bundle) for all the articles.
+
+[[https://github.com/kaushalmodi/ox-hugo/issues/210#issuecomment-424891371][Ref]]
+**** Article One
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: article-one
+:END:
+***** Article One Index page
+:PROPERTIES:
+:EXPORT_FILE_NAME: _index
+:END:
+This is an index page (/branch/ bundle) for Articles/Article One.
+***** Chapter One
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: chapter-one
+:END:
+****** Article One Chapter One Index page
+:PROPERTIES:
+:EXPORT_FILE_NAME: _index
+:END:
+This is an index page (/branch/ bundle) for Articles/Article
+One/Chapter One.
+****** Section 1A
+:PROPERTIES:
+:EXPORT_FILE_NAME: section-1a
+:END:
+This is the content of Articles/Article One/Chapter One/Section 1A.
+****** Section 1B
+:PROPERTIES:
+:EXPORT_FILE_NAME: section-1b
+:END:
+This is the content of Articles/Article One/Chapter One/Section 1B.
+** Table with rule after first row
+:PROPERTIES:
+:EXPORT_FILE_NAME: table-only-rule-after-first-row
+:EXPORT_DATE: 2017-07-12T19:26:13-04:00
+:END:
+| 1 | 2 | 3 | 4 |
+|---+---+---+---|
+| a | b | e | g |
+| c | d | f | h |
+** Source blocks with ATTR_HTML                      :attr___html:attr___css:
+:PROPERTIES:
+:EXPORT_FILE_NAME: source-blocks-with-attr-html
+:END:
+Some text.
+
+#+attr_html: :class indent-block
+#+attr_css: :padding-left 50px
+#+begin_src emacs-lisp
+(message (mapconcat #'identity
+                    '("Hello," "how" "are" "you?")
+                    " "))
+#+end_src
+
+Some more text.

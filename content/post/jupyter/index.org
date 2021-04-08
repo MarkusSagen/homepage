@@ -1,0 +1,9 @@
+#+TITLE: Index
+#+HUDO_SECTION: posts
+#+HUGO_BASE_DIR: ~/homepage
+
+* My post
+:PROPERTIES:
+:EXPORT_FILE_NAME: my-post
+:END:
+asdasd

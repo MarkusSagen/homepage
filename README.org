@@ -14,6 +14,8 @@
 
 ** Guides I used:
 - [[https://flaviocopes.com/start-blog-with-hugo/]]
+- [[https://gohugo.io/hosting-and-deployment/hosting-on-netlify/#configure-hugo-version-in-netlify]]
+
 
 ** Pre-requisite
 
@@ -278,7 +280,15 @@ git submodule add https://github.com/themefisher/academia-hugo.git themes/academ
 cp -r themes/academia-hugo/exampleSite/* .
 cp config/_default/config.toml .
 rm config/_default/config.toml
+
+
 #+end_src
+
+- Set the baseURL to "/"
+- Host the webpage on [[https://app.netlify.com]]
+-
+
+
 * TODO
 - [ ] Add better Search engine
 - [ ] Tag Blogs and projects
@@ -287,3 +297,11 @@ rm config/_default/config.toml
 - [ ] Google Analytics
 - [ ] Use pages offline
 - [ ] Better overview and filtering of blog posts
+- [ ] Add custom web address
+- [ ] Add Comment section
+- [ ] Add better layout of the different sections of the website
+- [ ] Setup SSL
+- [ ] Connect the Mail and Form to my GMail
+- [ ] Setup non-Google Email
+- [ ] Look into Disqus or similar for Chats https://disqus.com/features/engage/
+- [ ] Setup https://calendly.com/

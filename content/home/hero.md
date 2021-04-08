@@ -41,7 +41,11 @@ hero_media = "user-2.jpg"
   url = "#contact"
   label = "Contact me"
 
+# Goes to:
+#        /content/authors/admin/
+#        and contact sheet at the bottom
 +++
-## My name is **Michael Vahn** and I'm a **Professor** specializing in **Artificial Intelligence**
+## A constant learner, ML research engineer, and Emacs enthusiast
 
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.
+
+

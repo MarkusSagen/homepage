@@ -132,6 +132,7 @@ reading_time = true
 
 # Display comment count (if commenting enabled in config.toml)? (true/false)
 comment_count = true
+disable_comments = false
 
 # Display next/previous section pager? (true/false)
 section_pager = true #false

@@ -65,3 +65,10 @@ ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "
   category = "categories"
   publication_type = "publication_types"
   author = "authors"
+
+# Related content.
+# Make referenced author names be in large letters
+[related]
+  threshold = 80.0
+  includeNewer = true
+  toLower = false
