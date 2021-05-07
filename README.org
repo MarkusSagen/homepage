@@ -18,14 +18,19 @@
 
 
 ** Pre-requisite
-
 #+begin_src sh
 # install hugo
-brew install hugo
+sudo apt install hugo
 
 # Run the Hugo pages locally
-cd main
-hugo server
+git clone git@gtihub.com/markussagen/homepage
+cd homepage
+
+# Since using https://github.com/wowchemy/wowchemy-hugo-modules#install-with-git
+git submodule update --init --recursive
+
+# Start Hugo server
+hugo server -D
 #+end_src
 
 
@@ -58,7 +63,7 @@ hugo server
 |   |   |   |__index.md
 |   |   |   |__gallery
 |   |   |       |__LOTS OF IMAGES.png
-|   |   |   
+|   |   |
 |   |   |__index.md
 |   |   |__about.md
 |   |   |__accomplishment~.md
@@ -84,7 +89,7 @@ hugo server
 |   |   |
 |   |   |__jupyter
 |   |   |   |__index.md
-|   |   |   |__academia.jpg   
+|   |   |   |__academia.jpg
 |   |   |   |__featured.jpg
 |   |   |
 |   |   |__snail
@@ -117,22 +122,22 @@ hugo server
 |   |       |__index.jpg
 |   |       |__featured.jpg
 |   |
-|   |__publication 
+|   |__publication
 |   |   |___index.md
 |   |   |__conference-paper
 |   |   |   |__index.jpg
 |   |   |   |__featured.jpg
 |   |   |
-|   |   |__journal-article 
+|   |   |__journal-article
 |   |   |   |__index.jpg
 |   |   |   |__featured.jpg
 |   |   |
-|   |   |__preprint 
+|   |   |__preprint
 |   |       |__index.jpg
 |   |       |__featured.jpg
 |   |
 |   |__slides
-|   |   |__example 
+|   |   |__example
 |   |       |__index.md
 |   |
 |   |__talk
@@ -148,7 +153,7 @@ hugo server
 |   |   |__Syntesizing
 |   |       |__index.jpg
 |   |       |__featured.jpg
-|   |    
+|   |
 |   |__privacy.md
 |   |
 |__resources
@@ -192,12 +197,12 @@ hugo server
 |           |   |
 |           |   |__internal-project
 |           |   |   |__featured_XXX~.jpg
-|           |   |   |__featured_XYZ~.jpg 
+|           |   |   |__featured_XYZ~.jpg
 |           |   |
 |           |   |__robotics
 |           |   |__featured_XXX~.jpg
 |           |   |__featured_XYZ~.jpg
-|           |   
+|           |
 |           |__Skin-Cancer-AI
 |           |    |__featured_XXX~.jpg
 |           |    |__featured_XYZ~.jpg
@@ -207,24 +212,24 @@ hugo server
 |           |   |   |__featured_XXX~.jpg
 |           |   |   |__featured_XYZ~.jpg
 |           |   |
-|           |   |__journal-article 
+|           |   |__journal-article
 |           |   |   |__featured_XXX~.jpg
 |           |   |   |__featured_XYZ~.jpg
 |           |   |
-|           |   |__preprint 
+|           |   |__preprint
 |           |       |__featured_XXX~.jpg
 |           |       |__featured_XYZ~.jpg
 |           |
-|           |__talk 
+|           |__talk
 |               |__conference-paper
 |               |   |__featured_XXX~.jpg
 |               |   |__featured_XYZ~.jpg
 |               |   |__featured_YYY~.jpg
-|               |__journal-article 
+|               |__journal-article
 |               |   |__featured_XXX~.jpg
 |               |   |__featured_XYZ~.jpg
 |               |   |__featured_YYY~.jpg
-|               |__preprint 
+|               |__preprint
 |                   |__featured_XXX~.jpg
 |                   |__featured_XYZ~.jpg
 |                   |__featured_YYY~.jpg
@@ -254,17 +259,17 @@ hugo server
     |__package.json
     |__README.md
     |__theme.toml
-    
+
 ____________________________
 
 #+end_src
 
 ***  INFO
-- main/config/_default/config.toml  
+- main/config/_default/config.toml
   - Theme and website URL
-- main/config/_default/menus.toml  
+- main/config/_default/menus.toml
   - Show what items should be displayed in the clickable menu
-- main/config/_default/params.toml  
+- main/config/_default/params.toml
   - Color themes, Twitter, Contact info, analytic and general info
 ** Installation instructions
 #+begin_src sh
