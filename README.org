@@ -1,4 +1,6 @@
 * Markus Sagen homepage
+- [[http://sagen.page]]
+- [[http://sagen.website]]
 
 - Features that can be included:
   - [[https://wowchemy.com/docs/guide/search/][Link to wowchemy]]
