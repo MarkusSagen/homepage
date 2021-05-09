@@ -3,7 +3,7 @@
 widget = "hero"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 10  # Order that this section will appear.
+weight = 1  # Order that this section will appear.
 
 title = "Academia"
 
@@ -41,7 +41,7 @@ hero_media = "user-2.jpg"
 #        /content/authors/admin/
 #        and contact sheet at the bottom
 +++
-## A constant learner, ML research engineer, and Emacs enthusiast
+## Constant learner and Emacs enthusiast. Looking to solve interesting problems with software and AI
 
 
 

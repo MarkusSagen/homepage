@@ -1,11 +1,14 @@
 ---
 # Display name
 name: Markus Sagen
-avatar_image: "user-full.png"
+avatar_image: "user-full-2.jpg"
+# avatar_image: "user-full.png"
+
 # Username (this should match the folder name)
 authors:
 - admin
 # resume download button
+# **TODO**
 # btn:
 # - url : "https://sourcethemes.com/academic/docs/install/"
 #   label : "Download Resume"
@@ -90,4 +93,4 @@ A problem solver who loves to understand and apply machine learning/AI models fo
 - Automatic Question-Answering
 - Graph Theory 
 - Sequential Monte Carlo Methods
-- Simple Design
+- Simple Design and Automation

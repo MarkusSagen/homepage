@@ -15,8 +15,6 @@
 ** Guides I used:
 - [[https://flaviocopes.com/start-blog-with-hugo/]]
 - [[https://gohugo.io/hosting-and-deployment/hosting-on-netlify/#configure-hugo-version-in-netlify]]
-
-
 ** Pre-requisite
 #+begin_src sh
 # install hugo
@@ -35,10 +33,24 @@ hugo server -D
 
 
 - =content/home= = Everything here is on the landing page
-- =config/_default/= = Where all the configutration files are placed
+- =config/_default/= = Where all the configuration files are placed
+- =content/post/_index.md= - Where config for posts are placed
+- =content/authors/admin/_index.md= - Content configured for about me
 - =content/project= = (*TODO*) All Projects
 - =content/publications= - (*TODO*) All Publications
 - =content/talk= - (*TODO*) Slides and previous talks
+
+CSS and Javascript configs
+- =themes/academia-hugo/assets/scss/academia/_root.scss= = Most of css configs here
+
+### TODOs
+- Change the images
+- Add Blog posts
+- Upload old Slides
+- Workflow with Emacs and Org
+- Change the theme for code in dark mode - Be more like Palenight or Nord
+  + Github for light theme
+  + Nord with stronger accent for Dark
 
 ## Structure
 #+begin_src text
@@ -74,7 +86,6 @@ hugo server -D
 |   |   |__about.md
 |   |   |__accomplishment~.md
 |   |   |__contract.md
-|   |   |__experience.md
 |   |   |__featured.md
 |   |   |__hero.md
 |   |   |__people.md
@@ -83,6 +94,7 @@ hugo server -D
 |   |   |__publications.md
 |   |   |__skills.md
 |   |   |__slider.md
+|   |   |__studying.md
 |   |   |__tags.md
 |   |   |__talks.md
 |   |

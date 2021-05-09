@@ -1,5 +1,5 @@
 ---
-title: Posts
+title: Blog Posts
 
 # View.
 #   1 = List
@@ -9,6 +9,7 @@ view: 3
 
 # Optional header image (relative to `static/img/` folder).
 header:
-  caption: ""
+  caption: "Blog Posts"
   image: ""
 ---
+ 
