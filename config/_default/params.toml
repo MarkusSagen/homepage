@@ -51,19 +51,6 @@ date_format = "Monday, 02 Jan 2006"
 #   Examples: "3:04 pm" or "15:04"
 time_format = "15:04"
 
-############################
-## Contact Widget setup   ##
-############################
-
-# Enter contact details (optional). To hide a field, clear it to "".
-email = "Markus.John.Sagen@gmail.com"
-#phone = "888 888 88 88"
-#address = "Building 1 Room 1, Stanford University, California, 90210, USA"
-
-# Office hours: use `<br>` to insert a line break, or set to "" to remove office hours
-#office_hours = """Monday 10:00 to 13:00<br>
-#                  Wednesday 09:00 to 10:00"""
-
 # Enter an optional link for booking appointments (e.g. calendly.com).
 appointment_url = "https://calendly.com"
 
@@ -77,13 +64,8 @@ appointment_url = "https://calendly.com"
 #   fas = Common icons
 #         https://fontawesome.com/icons?d=gallery&s=regular,solid
 contact_links = [
-  {icon = "twitter", icon_pack = "fab", name = "DM Me", link = "https://twitter.com/Twitter"},
-  {icon = "envelope", icon_pack = "fas", name = "Send Me Mail", link = "mailto:Markus.John.Sagen@gmail.com"},
-  #{icon = "skype", icon_pack = "fab", name = "Skype Me", link = "skype:echo123?call"},
-  #{icon = "keybase", icon_pack = "fab", name = "Chat on Keybase", link = "https://keybase.io/"},
-  #{icon = "comments", icon_pack = "fas", name = "Discuss on Forum", link = "https://discourse.gohugo.io"},
-  #{icon = "telegram", icon_pack = "fab", name = "Telegram Me", link = "https://telegram.me/@Telegram"},
-  #{icon = "signal", icon_pack = "fab", name = "Signal Me", link = "https://signal.me/"}
+  {icon = "envelope", icon_pack = "fas", name = "Mail", link = "mailto:Markus.John.Sagen@gmail.com"},
+  {icon = "github", icon_pack = "fab", name = "Github", link = "https://github.com/markussagen"}
   ]
 
 # Display a map.
@@ -95,17 +77,6 @@ contact_links = [
 # To use OpenStreetMap on a high traffic site, set `map = 3` and enter your API key that can be obtained here:
 #   https://www.mapbox.com/studio/account/tokens
 # To get your coordinates, right-click on Google Maps and choose "What's here?". The coords will show up at the bottom.
-#
-# Map provider:
-#   0: No map
-#   1: Google Maps
-#   2: OpenStreetMap (Mapnik)
-#   3: OpenStreetMap (Mapbox)
-map = 0
-map_api_key = "AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"
-latitude = "37.4275"
-longitude = "-122.1697"
-zoom = 15
 
 ############################
 ## Plugins                ##

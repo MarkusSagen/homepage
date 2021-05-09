@@ -37,10 +37,6 @@ hero_media = "user-2.jpg"
   url = "/authors/admin"
   label = "Know more"
   
-[btn_alt]
-  url = "#contact"
-  label = "Contact me"
-
 # Goes to:
 #        /content/authors/admin/
 #        and contact sheet at the bottom

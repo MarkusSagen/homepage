@@ -34,6 +34,12 @@ hugo server -D
 #+end_src
 
 
+- =content/home= = Everything here is on the landing page
+- =config/_default/= = Where all the configutration files are placed
+- =content/project= = (*TODO*) All Projects
+- =content/publications= - (*TODO*) All Publications
+- =content/talk= - (*TODO*) Slides and previous talks
+
 ## Structure
 #+begin_src text
 |
