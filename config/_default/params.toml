@@ -4,6 +4,7 @@
 # marketing
 microsoft_clarity = ""
 
+
 # Color theme.
 #   Choose from `default`, `ocean`, `forest`, `dark`, `apogee`, `1950s`, `coffee`, `cupcake`, `strawberry`.
 color_theme = "dark"
@@ -34,17 +35,12 @@ highlight = true
 highlight_languages = ["r", "python", "markdown", "org", "yaml", "rust", "docker"]  # Add support for highlighting additional languages
 # highlight_style = "github"  # For supported styles, see https://cdnjs.com/libraries/highlight.js/
 # highlight_style = "railscast"
-highlight_style = "nord"  # For supported styles, see https://cdnjs.com/libraries/highlight.js
-# highlight_style = "atom-one-dark"
+# highlight_style = "nord"  # For supported styles, see https://cdnjs.com/libraries/highlight.js
+highlight_style = "atom-one-dark"
 
 # Enable global LaTeX math rendering?
 #   If false, you can enable it locally on a per page basis.
 math = true #false
-
-# Privacy pack
-#   Show a cookie consent message to visitors
-#   Anonymize IP in Google Analytics (if enabled)
-privacy_pack = false
 
 # Date and time format (refer to https://sourcethemes.com/academic/docs/customization/#date-format )
 #   Examples: "Mon, Jan 2, 2006" or "2006-01-02"
@@ -68,6 +64,7 @@ appointment_url = "https://calendly.com"
 #         https://fontawesome.com/icons?d=gallery&s=regular,solid
 contact_links = [
   {icon = "envelope", icon_pack = "fas", name = "Mail", link = "mailto:Markus.John.Sagen@gmail.com"},
+  {icon = "linkedin", icon_pack = "fab", name = "Linkedin", link = "https://www.linkedin.com/in/markussagen/"},
   {icon = "github", icon_pack = "fab", name = "Github", link = "https://github.com/markussagen"}
   ]
 
@@ -88,8 +85,8 @@ contact_links = [
 # Load CSS and JS plugins
 #   E.g. To load `/assets/css/custom.css`, set `plugins_css = ["custom"]`.
 #   E.g. To load `/assets/js/custom.js`, set `plugins_js = ["custom"]`.
-plugins_css = []
-plugins_js  = []
+plugins_css = ["main"]
+plugins_js  = ["main"]
 
 ############################
 ## Advanced options       ##

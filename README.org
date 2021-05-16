@@ -1,4 +1,10 @@
-* Markus Sagen homepage
+#+Title: Markus Sagen Homepage
+[[https://circleci.com/gh/akirak/emacs.d/tree/master][https://circleci.com/gh/akirak/emacs.d/tree/master.svg?style=svg]]
+* Info
+
+#+ATTR_EXPORT: alt Netlify Status
+[[https://app.netlify.com/sites/dreamy-lamarr-07ff24/deploys][https://api.netlify.com/api/v1/badges/c7fc6b6a-49bd-4004-8eed-8b1272e82278/deploy-status.png]]
+
 - [[http://sagen.page]]
 - [[http://sagen.website]]
 
@@ -28,6 +34,7 @@ cd homepage
 
 # Since using https://github.com/wowchemy/wowchemy-hugo-modules#install-with-git
 git submodule update --init --recursive
+git submodule add https://github.com/themefisher/academia-hugo.git themes/academia-hugo
 
 # Start Hugo server
 hugo server -D
@@ -41,21 +48,29 @@ hugo server -D
 - =content/project= = (*TODO*) All Projects
 - =content/publications= - (*TODO*) All Publications
 - =content/talk= - (*TODO*) Slides and previous talks
+- =XXX= - Where override for different configs and settings of the HUGO themes go
 
 CSS and Javascript configs
 - =themes/academia-hugo/assets/scss/academia/_root.scss= = Most of css configs here
 
-### TODOs
-- Change the images
-- Add Blog posts
-- Upload old Slides
-- Workflow with Emacs and Org
-- Change the theme for code in dark mode - Be more like Palenight or Nord
-  + Github for light theme
-  + Nord with stronger accent for Dark
+*** *TODOs*
+- [ ] Change the theme for code
+- [ ] Show tags on each blog post
+- [ ] Add tab to find all posts based on tags
+- [ ] Change the images
+- [ ] Add Blog posts
+- [ ] Upload old Slides
+- [ ] Workflow with Emacs and Org
+- [X] Change the theme for code in dark mode - Be more like Palenight or Nord
+  + [X] Github for light theme
+  + [X] Dark theme
+- [ ] Add link to posts based on tags
+- [ ] Comment section
 
-## Structure
+** Structure
 #+begin_src text
+|
+|__assets/css/main.css # added to config/_default/params.toml
 |
 |__config
 |   |___default
@@ -313,8 +328,11 @@ rm config/_default/config.toml
 - Host the webpage on [[https://app.netlify.com]]
 -
 
-
 * TODO
+:PROPERTIES:
+:HASH:     -1153505831300054959
+:MODIFIED: 2021-05-11 21:13
+:END:
 - [ ] Add better Search engine
 - [ ] Tag Blogs and projects
 - [ ] Add Slides and Reports from all previous projects
@@ -330,3 +348,16 @@ rm config/_default/config.toml
 - [ ] Setup non-Google Email
 - [ ] Look into Disqus or similar for Chats https://disqus.com/features/engage/
 - [ ] Setup https://calendly.com/
+
+** Make Search work across post, courses etc
+** Show tags on blog posts
+** Emacs config
+** Blogs
+:PROPERTIES:
+:HASH:     -1171300153610985452
+:MODIFIED: 2021-05-11 21:13
+:END:
+*** PDF reader
+*** Zotero and reference manager
+*** Learning Emacs
+*** My costum configs in Emacs
