@@ -2,7 +2,6 @@
 # Display name
 name: Markus Sagen
 avatar_image: "user-full-2.jpg"
-# avatar_image: "user-full.png"
 
 # Username (this should match the folder name)
 authors:
@@ -25,7 +24,7 @@ organizations:
   url: "https://Peltarion.com/"
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: Interested in machine learing towards text, sound and searches. Make AI models operational. Solve real-world problems. Automation with Python, Bash and Emacs
 
 # Should the user's education and interests be displayed?
 display_education: false
